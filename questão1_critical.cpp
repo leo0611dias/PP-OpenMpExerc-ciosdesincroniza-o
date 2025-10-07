@@ -1,4 +1,4 @@
-// UM BREVE RESUMO
+// UM BREVE RESUMO: usar #pragma omp critical para atualizar soma global
 //Objetivo: somar todas as raízes em paralelo sem perda de atualizações.
 //Etapas: cada thread calcula uma soma_local em seu bloco de iterações.
 //depois entra numa seção crítica (#pragma omp critical) para somar soma_local à soma_total. A seção crítica evita corrida de dados.
