@@ -3,6 +3,7 @@
 Este projeto contém 5 exercícios práticos sobre sincronização em OpenMP (C++), cada um ilustrando um mecanismo diferente de controle de concorrência.
 O objetivo é compreender como evitar condições de corrida e garantir resultados corretos em programas paralelos.
 
+
 ⚙️ Compilação e Execução
 
 Todos os exercícios foram escritos em C++ com OpenMP.
@@ -12,8 +13,10 @@ g++ -fopenmp questaoN_nome.cpp -o questaoN_nome
 
 ./questaoN_nome
 
+
 🔄 Substitua questaoN_nome.cpp pelo arquivo desejado, por exemplo:
 questao1_critical.cpp, questao2_atomic.cpp, questao3_barrier.cpp, questao4_ordered.cpp, questao5_lock.cpp.
+
 
 Resumo teórico uma demonstração mais "intuitiva":
 | Diretiva   | Tipo de Sincronização  | Uso Principal                     | Nível de Controle  |
@@ -25,7 +28,7 @@ Resumo teórico uma demonstração mais "intuitiva":
 | `locks`    | Exclusão mútua manual  | Controle granular e dinâmico      | Avançado           |
 
 
-🧠 Abaixo fiz uma breve explicação dos Exercícios
+Abaixo fiz uma breve explicação dos Exercícios
 Exercício 1 – Critical
 
 Objetivo: Somar as raízes de N equações em paralelo usando uma região crítica.
