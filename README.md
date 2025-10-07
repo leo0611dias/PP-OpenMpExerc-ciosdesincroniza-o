@@ -1,0 +1,1 @@
+# PP-OpenMpExerc-ciosdesincroniza-o
