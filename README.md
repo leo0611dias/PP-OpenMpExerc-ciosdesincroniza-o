@@ -9,6 +9,7 @@ Todos os exercícios foram escritos em C++ com OpenMP.
 Para compilar e executar qualquer um deles no terminal (Linux, macOS ou WSL) (gostaria de ressaltar que fiz em um sistema operacional linux), use:
 
 g++ -fopenmp questaoN_nome.cpp -o questaoN_nome
+
 ./questaoN_nome
 
 🔄 Substitua questaoN_nome.cpp pelo arquivo desejado, por exemplo:
