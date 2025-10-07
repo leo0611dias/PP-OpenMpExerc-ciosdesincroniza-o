@@ -1,4 +1,9 @@
-# PP-OpenMpExerc-ciosdesincroniza-o
+Como compilar?
+g++ -fopenmp exN.cpp -o exN
+./exN
+(Substitua exN.cpp por cada arquivo, por exemplo questão1_critical.cpp, )# PP-OpenMpExerc-ciosdesincroniza-o
+
+
 Explicações das 5 questões
 
 Exercício 1 (critical)
