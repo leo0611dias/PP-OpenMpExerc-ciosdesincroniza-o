@@ -1,8 +1,7 @@
-//Resumo:
+//Resumo: //usar #pragma omp barrier para sincronizar antes de reduzir
 //Objetivo: demonstrar sincronização explícita com barrier e redução manual.
 //Etapas: cada thread armazena sua soma em soma_por_thread[tid]; 
 //#pragma omp barrier garante que todas completaram antes de um único thread agregar (em #pragma omp single) os resultados.
-// ex3_barrier.cpp
 #include <iostream>
 #include <vector>
 #include <cmath>
