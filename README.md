@@ -1,27 +1,48 @@
-PP-OpenMpExerc-ciosdesincroniza-o
+🧩 PP - OpenMP: Exercícios de Sincronização
 
-Como compilar?
+Este projeto contém 5 exercícios práticos sobre sincronização em OpenMP (C++), cada um ilustrando um mecanismo diferente de controle de concorrência.
+O objetivo é compreender como evitar condições de corrida e garantir resultados corretos em programas paralelos.
 
-g++ -fopenmp exN.cpp -o exN
+⚙️ Compilação e Execução
 
-./exN
+Todos os exercícios foram escritos em C++ com OpenMP.
+Para compilar e executar qualquer um deles no terminal (Linux, macOS ou WSL), use:
 
-(Substitua exN.cpp por cada arquivo, por exemplo questão1_critical.cpp, questão2_operadoratomico.cpp etc.)# 
+g++ -fopenmp questaoN_nome.cpp -o questaoN_nome
+./questaoN_nome
 
+🔄 Substitua questaoN_nome.cpp pelo arquivo desejado, por exemplo:
+questao1_critical.cpp, questao2_atomic.cpp, questao3_barrier.cpp, questao4_ordered.cpp, questao5_lock.cpp.
 
-Explicações das 5 questões
+🧠 Explicação dos Exercícios
+Exercício 1 – Critical
 
-Exercício 1 (critical)
-Objetivo: somar todas as raízes de N equações em paralelo usando uma seção crítica. O código paraleliza o for com OpenMP; cada thread acumula localmente e, ao final, entra numa região #pragma omp critical para adicionar seu subtotal à soma_total. A seção crítica previne condições de corrida garantindo integridade do resultado. Resultado esperado: N * 5.0.
+Objetivo: Somar as raízes de N equações em paralelo usando uma região crítica.
+Cada thread acumula um subtotal local e, ao final, entra numa seção #pragma omp critical para atualizar a variável compartilhada soma_total.
+Isso impede condições de corrida e assegura a integridade do resultado final.
+➡️ Resultado esperado: N * 5.0
 
-Exercício 2 (atomic)
-Objetivo: demonstrar atualização atômica em variáveis compartilhadas. Cada iteração calcula as raízes e atualiza soma_total com #pragma omp atomic. A operação atomic é mais eficiente que critical para operações simples (como soma), evitando bloqueios mais pesados e reduzindo contenção.
+Exercício 2 – Atômico
 
-Exercício 3 (barrier)
-Objetivo: usar sincronização explícita com #pragma omp barrier e fazer uma redução manual. Cada thread escreve sua soma em um slot soma_por_thread[tid]. Depois de barrier (que espera todas completarem), um único thread faz a agregação. Esse padrão é útil quando você precisa de um ponto de sincronização antes de executar uma fase subsequente.
+Objetivo: Demonstrar a atualização atômica de variáveis compartilhadas.
+O código paraleliza o loop e utiliza #pragma omp atomic para somar valores de forma eficiente.
+A diretiva atomic é mais leve que critical para operações simples (como adições), evitando bloqueios complexos e aumentando o desempenho.
 
-Exercício 4 (ordered)
-Objetivo: garantir que efeitos colaterais (impressão) ocorram na ordem lógica dos índices. O loop é paralelizado, mas a região #pragma omp ordered dentro do corpo garante que as linhas cout saiam na ordem crescente de i. Útil quando a ordem de saída importa, mas ainda queremos paralelizar o processamento.
+Exercício 3 – Barrier
 
-Exercício 5 (locks)
-Objetivo: demonstrar uso de locks OpenMP (omp_lock_t) para proteger seções críticas. Em vez de critical ou atomic, o código usa omp_set_lock/omp_unset_lock para proteger soma_total. Locks dão mais controle (ex.: testes, tentativa de aquisição) mas exigem cuidado para evitar deadlocks.
+Objetivo: Aplicar uma barreira de sincronização explícita com #pragma omp barrier.
+Cada thread calcula e armazena seu subtotal em soma_por_thread[tid].
+Após a barreira, apenas uma thread realiza a soma final.
+Esse padrão é útil quando é necessário aguardar todas as threads antes de iniciar uma nova etapa do algoritmo.
+
+Exercício 4 – Ordered
+
+Objetivo: Manter a ordem de execução controlada mesmo com paralelismo.
+Dentro do loop paralelo, uma região #pragma omp ordered garante que as impressões (cout) ocorram na ordem crescente de i.
+Assim, o programa continua paralelo, mas preserva a sequência lógica de saída.
+
+Exercício 5 – Locks
+
+Objetivo: Usar travas explícitas (locks) para proteger regiões críticas.
+Em vez de critical ou atomic, o código utiliza omp_set_lock() e omp_unset_lock() para controlar o acesso à variável soma_total.
+Locks oferecem maior controle e permitem manipulações mais finas (como tentativas de aquisição), mas exigem cuidado para evitar deadlocks.
