@@ -6,7 +6,7 @@ O objetivo é compreender como evitar condições de corrida e garantir resultad
 ⚙️ Compilação e Execução
 
 Todos os exercícios foram escritos em C++ com OpenMP.
-Para compilar e executar qualquer um deles no terminal (Linux, macOS ou WSL), use:
+Para compilar e executar qualquer um deles no terminal (Linux, macOS ou WSL) (gostaria de ressaltar que fiz em um sistema operacional linux), use:
 
 g++ -fopenmp questaoN_nome.cpp -o questaoN_nome
 ./questaoN_nome
@@ -14,7 +14,17 @@ g++ -fopenmp questaoN_nome.cpp -o questaoN_nome
 🔄 Substitua questaoN_nome.cpp pelo arquivo desejado, por exemplo:
 questao1_critical.cpp, questao2_atomic.cpp, questao3_barrier.cpp, questao4_ordered.cpp, questao5_lock.cpp.
 
-🧠 Explicação dos Exercícios
+Resumo teórico uma demonstração mais "intuitiva":
+| Diretiva   | Tipo de Sincronização  | Uso Principal                     | Nível de Controle  |
+| ---------- | ---------------------- | --------------------------------- | ------------------ |
+| `critical` | Exclusão mútua global  | Proteger blocos maiores de código | Médio              |
+| `atomic`   | Exclusão mútua leve    | Atualizações simples em variáveis | Alto desempenho    |
+| `barrier`  | Sincronização coletiva | Esperar todas as threads          | Controle de fase   |
+| `ordered`  | Execução ordenada      | Manter ordem em seções paralelas  | Sequencial parcial |
+| `locks`    | Exclusão mútua manual  | Controle granular e dinâmico      | Avançado           |
+
+
+🧠 Abaixo fiz uma breve explicação dos Exercícios
 Exercício 1 – Critical
 
 Objetivo: Somar as raízes de N equações em paralelo usando uma região crítica.
