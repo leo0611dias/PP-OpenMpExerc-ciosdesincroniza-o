@@ -1,4 +1,4 @@
-//Resumo:
+//Resumo: usar #pragma omp atomic para somar
 //Objetivo: evitar corrida de dados com menor overhead que critical.
 //Etapas: cada iteração soma diretamente ao soma_total usando #pragma omp atomic, que garante a operação de leitura-modifica-escreve como atômica.
 Etapas: cada iteração soma diretamente ao soma_total usando #pragma omp atomic, que garante a operação de leitura-modifica-escreve como atômica.
